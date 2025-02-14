@@ -1,6 +1,8 @@
 package com.android.ffmpeg
 
 import android.os.Bundle
+import android.view.View
+import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,34 +16,28 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.android.ffmpeg.ui.theme.FFmpegAndroidCodeTheme
 
 class MainActivity : ComponentActivity() {
+
+    companion object {
+         init {
+             System.loadLibrary("decodeMp4")
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            FFmpegAndroidCodeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        val textView = findViewById<TextView>(R.id.source_name)
+
+        findViewById<View>(R.id.start).setOnClickListener {
+            textView.text = getFFMpegVersion()
+
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FFmpegAndroidCodeTheme {
-        Greeting("Android")
-    }
+   private external fun getFFMpegVersion(): String
+
 }

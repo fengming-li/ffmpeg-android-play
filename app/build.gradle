@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace 'com.android.ffmpeg'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         applicationId "com.android.ffmpeg"
@@ -21,7 +21,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags ''
-                abiFilters 'arm64-v8a', 'armeabi-v7a'
+                abiFilters 'arm64-v8a'
             }
         }
     }
@@ -56,6 +56,8 @@ android {
             version '3.22.1'
         }
     }
+
+
 }
 
 dependencies {
