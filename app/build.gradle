@@ -8,7 +8,7 @@ android {
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.android.ffmpeg"
+        applicationId "com.ffmpeg.code"
         minSdk 24
         targetSdk 34
         versionCode 1
