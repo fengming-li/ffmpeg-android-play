@@ -2,13 +2,6 @@
 .gradle/
 *.log
 
-*.apk
-
-*.iml
-.idea/
-misc.xml
-*.hprof
-
 .externalNativeBuild/
 
 output.json
